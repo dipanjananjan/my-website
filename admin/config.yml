@@ -1,6 +1,6 @@
 backend:
   name: git
-  repo: your-github-username/your-repo-name # Replace with your GitHub repository
+  repo: anjanindi31@gmail.com # Replace with your GitHub repository
   branch: main # Branch to push and pull content
 
 media_folder: "assets/uploads" # Path for uploaded media in your repo
