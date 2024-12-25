@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Home</title>
+</head>
+<body>
+  <div id="dynamic-content">
+    <p>Loading content...</p>
+  </div>
+
+  <script>
+    // Function to fetch CMS-managed content
+    async function fetchContent() {
+      try {
+        const response = await fetch('/index.html'); // Fetch the file
+        const text = await response.text();
+
+        // Parse content (e.g., look for placeholders)
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+
+        // Replace dynamic content
+        const title = doc.querySelector('#page-title')?.textContent || 'Default Title';
+        const content = doc.querySelector('#dynamic-content')?.innerHTML || '<p>Default Content</p>';
+
+        document.querySelector('#page-title').textContent = title;
+        document.querySelector('#dynamic-content').innerHTML = content;
+      } catch (err) {
+        console.error('Error fetching content:', err);
+        document.querySelector('#dynamic-content').innerHTML = '<p>Failed to load content.</p>';
+      }
+    }
+
+    fetchContent();
+  </script>
+</body>
+</html>

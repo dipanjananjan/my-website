@@ -1,0 +1,18 @@
+backend:
+  name: git
+  repo: your-github-username/your-repo-name # Replace with your GitHub repository
+  branch: main # Branch to push and pull content
+
+media_folder: "assets/uploads" # Path for uploaded media in your repo
+public_folder: "/assets/uploads" # Public path for uploaded media
+
+collections:
+  - name: "homepage" # Name of the collection
+    label: "Home Page" # Label in the CMS
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "index.html" # Path to your homepage file
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Content", name: "content", widget: "markdown" }
